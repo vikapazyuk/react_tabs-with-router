@@ -8,8 +8,8 @@ or [React Tabs](https://github.com/mate-academy/react_tabs#react-tabs).
 > Here is [the working version](https://mate-academy.github.io/react_tabs-with-router)
 
 1. Navigation with `Home` and `Tabs` links:
-    - should be visible on every page;
-    - should highlight an active link with `is-active` class;
+    - should be visible on every page
+    - should highlight an active link with `is-active` class
 1. `TabsPage` page should work for both `/tabs` and `/tabs/:tabId` paths (use nested routes);
     ```tsx
     <Route path="tabs">
