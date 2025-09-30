@@ -1,26 +1,21 @@
 import { createRoot } from 'react-dom/client';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { App } from './App';
-import { HomePage } from './components/HomePage';
 import { TabsPage } from './components/TabsPage';
-import { PageNotFound } from './components/PageNotFound';
-import { TabContent } from './components/TabContent';
-import { TabsProvider } from './components/TabsContext/TabsContext';
+import { HomePage } from './components/HomePage';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <TabsProvider>
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<HomePage />} />
-          <Route path="home" element={<Navigate to="/" replace />} />
-          <Route path="tabs" element={<TabsPage />}>
-            <Route index element={<TabContent />} />
-            <Route path=":tabId" element={<TabContent />} />
-          </Route>
-          <Route path="*" element={<PageNotFound />} />
+  <HashRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<HomePage />} />
+        <Route path="tabs">
+          <Route index element={<TabsPage />} />
+          <Route path=":tabId" element={<TabsPage />} />
         </Route>
-      </Routes>
-    </HashRouter>
-  </TabsProvider>,
+        <Route path="home" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<h1 className="title">Page not found</h1>} />
+      </Route>
+    </Routes>
+  </HashRouter>,
 );
